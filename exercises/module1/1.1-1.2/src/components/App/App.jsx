@@ -1,6 +1,6 @@
-import Total from "./components/Total"
-import Header from "./components/Header"
-import Content from "./components/Content"
+import Total from "../Total/Total"
+import Header from "../Header/Header"
+import Content from "../Content/Content"
 
 const App = () => {
   // const-definitions
