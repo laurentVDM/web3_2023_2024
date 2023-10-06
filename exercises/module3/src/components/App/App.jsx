@@ -1,40 +1,14 @@
 import Button from 'components/Button/Button'
-import { useState } from 'react'
-
-const StatisticLine =({value, text}) => {
-  return(
-    <p>{text} : {value}</p>
-  )
-}
-
-
-const Statistics = ({ good, neutral, bad }) => {
-  const all = good + neutral + bad;
-  const average = (good * 1 + neutral * 0 + bad * -1) / all;
-  const positive = (good * 100) / all;
-  return(
-
-    all > 0 ? (
-      <div>
-      <h1>Statistics</h1>
-      <StatisticLine text="good" value ={good} />
-      <StatisticLine text="neutral" value ={neutral} />
-      <StatisticLine text="bad" value ={bad} />
-      <StatisticLine text="all" value ={all} />
-      <StatisticLine text="average" value ={average} />
-      <StatisticLine text="positive" value ={positive} />
-      </div>
-    ) : (
-      <p>No feedback given yet.</p>
-    )    
-  )
-}
+import Loading from 'components/Loading/Loading'
+import Statistics from 'components/Statistics/Statistics'
+import { useEffect, useState } from 'react'
 
 const App = () => {
   // save clicks of each button to its own state
   const [good, setGood] = useState(0)
   const [neutral, setNeutral] = useState(0)
   const [bad, setBad] = useState(0)
+  const [loading, setLoading] = useState(true);
 
   const handleGood = () => {
     setGood(good+1)
@@ -46,7 +20,19 @@ const App = () => {
     setBad(bad+1)
   }  
 
+  useEffect(() => {
+    // Simulez une attente de 3 secondes avant de désactiver le chargement
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 3000);
+
+    return () => clearTimeout(timer); // Nettoyez le timer en cas de démontage du composant
+  }, []);
+
   return (
+    loading ? (
+      <Loading />
+    ) : (
     <div>
       <h1>GIVE FEEDBACK</h1>
       <Button handleClick={handleGood} text="good" />
@@ -54,6 +40,7 @@ const App = () => {
       <Button handleClick={handleBad} text="bad"/>
       <Statistics good={good} neutral={neutral} bad={bad}></Statistics>      
     </div>
+    )
   )
 }
 
