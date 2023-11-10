@@ -1,0 +1,6 @@
+Authorise
+
+- parler des droits des utilisateurs a la creation
+- on peut modifier les droits par apres
+- on peut ajouter des droits spécifiques
+- on peut ajouter des groupes de droits comme en js
