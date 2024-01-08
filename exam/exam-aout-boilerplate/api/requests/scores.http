@@ -1,0 +1,20 @@
+@hostname = localhost
+@port = 3001
+@host = http://{{hostname}}:{{port}}
+
+### get all scores
+
+GET {{host}}/scores
+Accept: application/json
+
+### post one new score
+
+POST {{host}}/scores
+Accept: application/json
+Content-Type: application/json
+
+{
+  "value": 5,
+  "player": "John Doe",
+  "game": "Chess"
+}

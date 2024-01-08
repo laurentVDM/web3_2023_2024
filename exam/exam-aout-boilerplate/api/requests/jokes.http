@@ -1,0 +1,28 @@
+@hostname = localhost
+@port = 3001
+@host = http://{{hostname}}:{{port}}
+
+### Get all
+GET {{host}}/jokes
+Accept: application/json
+
+### Get one
+GET {{host}}/jokes/6461f476d9a9da9dbeade34e
+Accept: application/json
+
+### Delete one
+
+DELETE {{host}}/jokes/659c0afa477ef45b75a61185
+Accept: application/json
+
+###
+
+POST {{host}}/jokes
+Accept: application/json
+Content-Type: application/json
+
+{
+  "question": "What did the ocean say to the beach?",
+  "answer": "Nothing, it just waved.",
+  "category": "Puns"
+}

@@ -43,6 +43,9 @@ app.use(cors());
 app.use(express.json());
 app.use(middlewares.logger);
 
+app.use('/jokes', require('./routes/jokes'));
+app.use('/scores', require('./routes/scores'));
+
 app.use(middlewares.errorHandler);
 
 // Start server
