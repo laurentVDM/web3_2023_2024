@@ -1,9 +1,11 @@
 import axios from 'axios';
 
-const baseURL = 'http://localhost:3001'; // Remplacez par l'URL de votre API
+const baseUrl = "http://localhost:3001";
 
-const jokeApi = axios.create({
-  baseURL: `${baseURL}/jokes`
-});
+const getAll = () => axios.get(`${baseUrl}/jokes`).then(response => response.data);
+
+const get = (id) => axios.get(`${baseUrl}/jokes/${id}`).then(response => response.data);
+
+const jokeApi = { getAll, get };
 
 export default jokeApi;

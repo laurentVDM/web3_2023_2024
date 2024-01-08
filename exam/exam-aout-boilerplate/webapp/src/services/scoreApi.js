@@ -1,9 +1,11 @@
 import axios from 'axios';
 
-const baseURL = 'http://localhost:3001'; // Remplacez par l'URL de votre API
+const baseUrl = "http://localhost:3001";
 
-const scoreApi = axios.create({
-  baseURL: `${baseURL}/scores`
-});
+const getAll = () => axios.get(`${baseUrl}/scores`).then(response => response.data);
+
+const add = (score) => axios.post(`${baseUrl}/scores`, score).then(response => response.data);
+
+const scoreApi = { getAll, add };
 
 export default scoreApi;
